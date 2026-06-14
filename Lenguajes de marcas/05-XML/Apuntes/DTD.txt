@@ -1,0 +1,137 @@
+Guía breve: estructura y elementos principales de un DTD (Document Type Definition)
+
+Un DTD es un “contrato” que define cómo debe ser un XML: qué etiquetas pueden aparecer, en qué orden, cuántas veces y qué atributos son válidos. Si un XML cumple su DTD, decimos que es válido (además de bien formado).
+
+ 
+
+1) Cómo vamos a usar un DTD con un XML
+
+El DTD puede ir en un archivo aparte (.dtd) y se enlaza desde el XML con DOCTYPE:
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE parking SYSTEM "parking.dtd">
+
+<parking>
+
+  ...
+
+</parking>
+
+parking debe coincidir con el elemento raíz del XML.
+"parking.dtd" es la ruta al fichero DTD (normalmente relativa).
+ 
+
+2) Comentarios en DTD
+
+Se escriben igual que en XML:
+
+<!-- Esto es un comentario -->
+
+ 
+
+3) Declaración de elementos: <!ELEMENT ...>
+
+Sirve para definir qué contenido tiene una etiqueta.
+
+a) Elemento con texto
+
+<!ELEMENT nombre (#PCDATA)>
+
+Significa que <nombre> à solo puede contener texto (caracteres), no hijos (otros elementos).:
+
+
+<nombre>Pepe</nombre>
+
+También es válido que el texto esté vacío (esto sigue siendo “texto”, solo que de longitud 0):
+
+<nombre></nombre>
+
+ 
+
+b) Elemento vacío (autocerrado)
+
+<!ELEMENT telefonoSoporte EMPTY>
+
+Solo admite → etiqueta vacía (<x/>):
+
+<telefonoSoporte />
+
+ 
+
+c) Elemento con hijos en orden
+
+<!ELEMENT direccion (ciudad, codigoPostal)>
+
+Obliga a que dentro de <direccion> aparezcan en este orden:
+<ciudad>...</ciudad> y luego <codigoPostal>...</codigoPostal>
+
+d) Repeticiones y opcionales
+
+En DTD se usan estos símbolos:
+
+?   → 0 o 1 (opcional)
+*   → 0 o más
++   → 1 o más
+Ejemplos:
+
+<!ELEMENT categorias (categoria+)>
+
+<categorias> (plural) debe tener al menos una <categoria> (singular).
+
+ 
+
+<!ELEMENT producto (nombre, marca, variantes?, tags)>
+
+<variantes> es opcional (puede aparecer o no).
+
+ 
+
+e) Alternativas
+
+<!ELEMENT pago (efectivo | tarjeta)>
+
+Dentro de <pago> debe haber o <efectivo> o <tarjeta>.
+
+ 
+
+4) Declaración de atributos: <!ATTLIST ...>
+
+Define los atributos permitidos en un elemento, su tipo y si son obligatorios.
+
+Ejemplo:
+
+<!ATTLIST usuario
+
+          id                 ID                            #REQUIRED
+
+          premium (true|false)           #REQUIRED
+
+          email         CDATA                  #IMPLIED>
+
+Tipos habituales de atributos
+
+CDATA: texto libre.
+ID: identificador único en todo el XML.
+IDREF: referencia a un ID existente.
+Enumeraciones: lista cerrada de valores (true|false).
+ 
+
+Obligatorio u opcional
+
+#REQUIRED: obligatorio.
+#IMPLIED: opcional (puede faltar).
+#FIXED "valor": si aparece, debe tener ese valor.
+ 
+
+5) Lo que valida bien un DTD (y lo que no)
+
+Un DTD valida muy bien:
+
+estructura (qué va dentro de qué)
+orden de elementos
+número de repeticiones
+atributos obligatorios/opcionales
+valores enumerados (listas cerradas)
+referencias con ID / IDREF
+Un DTD no valida tipos numéricos o fechas “de verdad” (eso es más propio de XSD/Relax NG): en DTD casi todo se trata como texto.

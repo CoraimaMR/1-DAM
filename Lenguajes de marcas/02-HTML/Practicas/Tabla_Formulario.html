@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<!-- ESENCIALES -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tabla_Formulario</title>
+  </head>
+
+  <!-- CUERPO DE LA WEB -->
+  <body>
+    <!-- TABLA -->
+    <table border="1">
+      <!-- Nombre -->
+      <caption>
+        Tabla de criptomonedas
+      </caption>
+      <!-- Primera fila -->
+      <thead>
+        <tr>
+          <th>Activo</th>
+          <th>Precio</th>
+          <th>Diferencia (24h)</th>
+          <th>Gráfico</th>
+        </tr>
+      </thead>
+      <!-- Cuerpo tabla -->
+      <tbody>
+        <!-- Bitcoin -->
+        <tr>
+          <td>
+            <img src="" alt="Logo de Bitcoin" />
+            <figcaption>Bitcoin</figcaption>
+            <figcaption>BTC</figcaption>
+          </td>
+          <td>87.578 €</td>
+          <td style="color: red">-1,98 %</td>
+          <td>
+            <img src="" alt="Gráfico de Bitcoin" />
+          </td>
+        </tr>
+        <!-- XRP -->
+        <tr>
+          <td>
+            <img src="" alt="Logo de XRP" />
+            <figcaption>XRP</figcaption>
+            <figcaption>XRP</figcaption>
+          </td>
+          <td>2,0162 €</td>
+          <td style="color: red">-3,99 %</td>
+          <td>
+            <img src="" alt="Gráfico de XRP" />
+          </td>
+        </tr>
+        <!-- Ethereum -->
+        <tr>
+          <td>
+            <img src="" alt="Logo de Ethereum" />
+            <figcaption>Ethereum</figcaption>
+            <figcaption>ETH</figcaption>
+          </td>
+          <td>2930,4 €</td>
+          <td style="color: red">-2,6 %</td>
+          <td>
+            <img src="" alt="Gráfico de Ethereum" />
+          </td>
+        </tr>
+        <!-- Solana -->
+        <tr>
+          <td>
+            <img src="" alt="Logo de Solana" />
+            <figcaption>Solana</figcaption>
+            <figcaption>SOL</figcaption>
+          </td>
+          <td>131,8 €</td>
+          <td style="color: red">-4,7 %</td>
+          <td>
+            <img src="" alt="Gráfico de Solana" />
+          </td>
+        </tr>
+        <!-- Cardano -->
+        <tr>
+          <td>
+            <img src="" alt="Logo de Cardano" />
+            <figcaption>Cardano</figcaption>
+            <figcaption>ADA</figcaption>
+          </td>
+          <td>0,47255 €</td>
+          <td style="color: red">-4,43 %</td>
+          <td>
+            <img src="" alt="Gráfico de Cardano" />
+          </td>
+        </tr>
+      </tbody>
+      <!-- Texto debajo tabla -->
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <a href="#">Ver las 421 criptomonedas </a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- FORMULARIO 1 -->
+    <form action="#" method="post">
+      <h2>Déjanos tus datos</h2>
+      <!-- Nombre -->
+      <label for="nombre">Tu nombre y apellidos</label><br />
+      <input type="text" required /><br /><br />
+      <!-- Email -->
+      <label for="email">Tu email</label><br />
+      <input type="email" required /><br /><br />
+      <!-- Motivo de contacto -->
+      <label for="motivo">Motivo de contacto</label><br />
+      <select required>
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="consulta">Opción 1</option>
+        <option value="sugerencia">Opción 2</option>
+        <option value="queja">Opción 3</option>
+        <option value="otro">Opción 4</option></select
+      ><br /><br />
+      <!-- Mensaje de -->
+      <label for="mensaje">Tu mensaje</label><br />
+      <textarea
+        minlength="0"
+        maxlength="1000"
+        required
+      ></textarea><br /><br />
+      <!-- Referencia -->
+      <label for="referencia">Anuncio o contenido al que hace referencia</label
+      ><br />
+      <textarea required></textarea>
+      <p>URL de la página o código del anuncio</p>
+      <!-- Contactar -->
+      <input type="submit" value="Contactar" />
+      <p>Al contactar declaras haber leído nuestra <a href="#">política de privacidad</a></p>
+    </form>
+
+    <!-- Formulario 2 -->
+    <form action="#" method="post">
+      <h2>Déjanos tus datos</h2>
+      <!-- Nombre -->
+      <label for="nombre">Tu nombre y apellidos</label><br />
+      <input type="text" required /><br /><br />
+      <!-- Email -->
+      <label for="email">Tu email</label><br />
+      <input type="email" required /><br /><br />
+      <!-- Motivo de contacto -->
+      <label for="motivo">Motivo de contacto</label><br />
+      <select required>
+        <option value="" disabled selected>Seleccionar</option>
+        <option value="consulta">Opción 1</option>
+        <option value="sugerencia">Opción 2</option>
+        <option value="queja">Opción 3</option>
+        <option value="otro">Opción 4</option></select
+      ><br /><br />
+  </body>
+</html>

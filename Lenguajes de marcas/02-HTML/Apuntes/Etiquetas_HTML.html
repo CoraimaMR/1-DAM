@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html lang="es">
+  <!---------------------------------------------------------
+  --------------------- ESENCIALES --------------------------
+  ---------------------------------------------------------->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HTML</title>
+    <meta name="description" content="Estructura HTML" />
+  </head>
+
+  <!---------------------------------------------------------
+  --------------------- CUERPO WEB --------------------------
+  ---------------------------------------------------------->
+  <body>
+    
+    <!-----------------------------------------------
+    ---------------- ENCABEZADO ---------------------
+    ------------------------------------------------>
+    <header>
+      <!-- Logotipo -->
+       <section>
+        <img src="" height="" width="" alt="LOGOTIPO DE LA WEB" />
+        <figcaption>Nombre de la web</figcaption>
+      </section>  
+    </header>
+      
+    <!-----------------------------------------------
+    ------------ NAVEGACIÓN PRINCIPAL ---------------
+    ------------------------------------------------>
+    <nav aria-label="NAVEGACIÓN PRINCIPAL">
+      <!-- LISTA DESORDENADA -->
+      <ul>
+        <!-- ENUMERACIÓN --> 
+        <li><a href="#">ENLACE 1</a></li>
+        <li><a href="#">ENLACE 2</a></li>
+        <li><a href="#">ENLACE 3</a></li>
+      </ul>
+
+      <!-- LISTA ORDENADA -->
+      <ol>  
+        <!-- ENUMERACIÓN -->
+        <li><a href="#">ENLACE A</a></li>
+        <li><a href="#">ENLACE B</a></li>
+        <li><a href="#">ENLACE C</a></li>
+      </ol>
+    </nav>
+
+    <!-----------------------------------------------
+    ---------------- BARRA LATERAL ------------------
+    ------------------------------------------------>
+    <aside>
+      <h2>Título del contenido complementario</h2>
+      <p>Texto del contenido complementario</p>
+    </aside>
+
+    <!-----------------------------------------------
+    ----------- CONTENIDO DE LA WEB -----------------
+    ------------------------------------------------>
+    <main>
+      <!---------- CONTENIDO ------------>
+      <article>
+        <!-- Contenido principal del artículo -->
+        <header>
+          <h1>Título  del artículo</h1>
+          <p>Subtítulo o descripción breve del artículo</p>
+        </header>
+        <!--------------- Sección 1: IMÁGENES ------------------->
+        <section>
+          <h2>Sección 1: IMÁGENES</h2>
+          <figure>
+            <img src="" height="" width="" alt="DESCRIPCIÓN DE LA IMAGEN" />
+            <figcaption>Pie de foto</figcaption>
+          </figure>
+        </section>
+        <!--------------- Sección 2: FORMATOS ------------------->
+        <section>
+          <h2>Sección 2: FORMATOS</h2>
+          <p>
+            Párrafo de texto con un <a href="#">enlace</a>, una
+            <strong>palabra en negrita</strong> y una
+            <em>palabra en cursiva.</em>
+          </p>
+        </section>
+        <!--------------- Sección 3: TABLAS ------------------->
+        <section>
+          <h2>Sección 3: TABLAS</h2>
+          <table>
+            <!-- Borde para la tabla -->
+            <table border="1">
+
+              <!-- Título tabla -->
+              <caption>Tabla de ejemplo</caption>
+              <!-- Encabezado tabla -->
+              <thead>
+                <tr>
+                  <th>Columna 1</th>
+                  <th>Columna 2</th>
+                  <th>Columna 3</th>
+                  <th>Columna 4</th>
+                </tr>
+              </thead>
+              <!-- Cuerpo tabla -->
+              <tbody>
+                <tr>
+                  <td>Fila 1, Celda 1</td>
+                  <td>Fila 1, Celda 2</td>
+                  <td>Fila 1, Celda 3</td>
+                  <td>Fila 1, Celda 4</td>
+                </tr>
+                <tr>
+                  <td>Fila 2, Celda 1</td>
+                  <td>Fila 2, Celda 2</td>
+                  <td>Fila 2, Celda 3</td>
+                  <td>Fila 2, Celda 4</td>
+                </tr>
+                <tr>
+                  <td>Fila 3, Celda 1</td>
+                  <td>Fila 3, Celda 2</td>
+                  <td>Fila 3, Celda 3</td>
+                  <td>Fila 3, Celda 4</td>
+                </tr>
+              </tbody>
+              <!-- Texto debajo tabla -->
+              <tfoot>
+                <tr>
+                  <td colspan="4">
+                    <a href="#">Enlace pie de página</a>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+        </section>
+        <!--------------- Sección 4: FORMULARIOS ------------------->
+        <section>
+          <h2>Sección 4: FORMULARIOS</h2>
+          <!-- APUNTES -->
+          
+
+          <!-- EJEMPLO -->
+          <form
+          action="/contacto"
+          method="post"
+          onsubmit="event.preventDefault(); /* aquí no se envía nada */" >
+          <!-- action: endpoint que recibe los datos; method="post" para enviar el cuerpo del formulario -->
+
+          <h3>Déjanos tus datos</h3>
+          <!-- Título visible que contextualiza el formulario -->
+
+          <fieldset>
+            <!-- Agrupa campos relacionados y ayuda a la accesibilidad -->
+            <label for="full_name">Tu nombre y apellidos</label>
+            <!-- 'for' vincula el label con el control por su id -->
+            <input
+              id="full_name"
+              name="full_name"
+              type="text"
+              required
+              autocomplete="name"
+              inputmode="text"
+            />
+            <!-- id para el label; name clave que llega al servidor; type="text" básico; required activa validación nativa; autocomplete sugiere datos guardados; inputmode mejora teclado móvil -->
+          </fieldset>
+          <!-- Cierre del grupo de "nombre" -->
+
+          <fieldset>
+            <!-- Grupo del email -->
+            <label for="email">Tu email</label>
+            <!-- Etiqueta accesible para el campo de correo -->
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              inputmode="email"
+            />
+            <!-- type="email" valida formato; required obliga a completarlo; autocomplete e inputmode facilitan entrada y teclado -->
+          </fieldset>
+          <!-- Cierre del grupo de "email" -->
+
+          <fieldset>
+            <!-- Grupo del motivo -->
+            <label for="reason">Indícanos el motivo del contacto</label>
+            <!-- Describe el propósito del selector -->
+            <select id="reason" name="reason" required>
+              <!-- Select nativo; required evita dejar el placeholder seleccionado -->
+              <option value="" disabled selected>Seleccionar</option>
+              <!-- Placeholder no enviable -->
+              <option value="1">Consulta o duda</option>
+              <!-- Opción válida -->
+              <option value="2">Problema usando idealista</option>
+              <!-- Opción válida -->
+              <option value="3">Reportar fraude</option>
+              <!-- Opción válida -->
+              <option value="4">Sugerencia de mejora</option>
+              <!-- Opción válida -->
+              <option value="5">Error en precio o dirección de mi anuncio</option>
+              <!-- Opción válida -->
+              <option value="6">Reportar contenido ilegal o inapropiado</option>
+              <!-- Opción válida -->
+              <option value="7">Problema con servicio de pago</option>
+              <!-- Opción válida -->
+            </select>
+            <!-- Control nativo, accesible y compatible con teclado/lector de pantalla -->
+          </fieldset>
+          <!-- Cierre del grupo de "motivo" -->
+
+          <fieldset>
+            <!-- Grupo del mensaje -->
+            <label for="message">Tu mensaje</label>
+            <!-- Etiqueta accesible para el textarea -->
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              maxlength="1000"
+              required
+              aria-describedby="message_help"
+            ></textarea>
+            <!-- rows fija altura inicial; maxlength limita a 1000; required lo hace obligatorio; aria-describedby enlaza texto de ayuda/contador -->
+            <span id="message_help">0/1000</span>
+            <!-- Indicador visual del límite; sirve como ayuda accesible al estar referenciado -->
+          </fieldset>
+          <!-- Cierre del grupo de "mensaje" -->
+
+          <fieldset>
+            <!-- Grupo de referencia del anuncio/contenido -->
+            <label for="reference"
+              >Anuncio o contenido al que hace referencia</label
+            >
+            <!-- Describe el campo -->
+            <input
+              id="reference"
+              name="reference"
+              type="url"
+              placeholder="URL de la página o código del anuncio"
+              autocomplete="url"
+              inputmode="url"
+            />
+            <!-- type="url" aporta validación si el usuario introduce una URL; placeholder guía; autocomplete e inputmode optimizan la entrada -->
+            <span aria-hidden="true">URL de la página o código del anuncio</span>
+            <!-- Texto auxiliar; aria-hidden porque la info ya la cubren label/placeholder -->
+          </fieldset>
+          <!-- Cierre del grupo de "referencia" -->
+
+          <button type="submit">Contactar</button>
+          <!-- Envía el formulario al 'action' usando el método especificado -->
+
+          <p>
+            Al contactar declaras haber leído nuestra
+            <a href="/privacidad" target="_blank" rel="noopener noreferrer"
+              >política de privacidad</a
+            >
+          </p>
+          <!-- Aviso legal; target abre en nueva pestaña y rel protege frente a window.opener -->
+        </form>
+        <!-- Cierre del formulario -->
+        </section>
+      </article>
+    </main>
+    
+    <!-----------------------------------------------
+    ----------------- PIE DE PÁGINA -----------------
+    ------------------------------------------------->
+    <footer>
+      <p>Derechos reservados © 2025</p>
+    </footer>
+  </body>
+</html>

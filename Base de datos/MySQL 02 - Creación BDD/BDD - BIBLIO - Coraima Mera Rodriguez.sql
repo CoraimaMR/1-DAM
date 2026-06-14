@@ -1,0 +1,105 @@
+/*Ejercicio 06.04
+Crear una base de datos, llamada "BIBLIO" y añadir las tablas descritas más
+adelante en el esquema relacional, donde las claves primarias están subrayadas y
+las claves ajenas se especifican con FK.
+• Restricciones de integridad: El borrado de registros referenciados no está
+permitido, y las modificaciones de registros ref. se harán en cascada.
+• NINGUNA COLUMNA PUEDE TOMAR VALOR NULO
+• TODOS LOS VALORES ENTEROS SON POSITIVOS (SIN SIGNO)*/
+
+CREATE DATABASE BIBLIO;
+use BIBLIO;
+
+DROP TABLE IF EXISTS ESCRIBE;
+DROP TABLE IF EXISTS LIBRO;
+DROP TABLE IF EXISTS AUTOR;
+DROP TABLE IF EXISTS EDITORIAL;
+DROP TABLE IF EXISTS CATEGORIA;
+
+/*R1 = Tabla CATEGORIA ( CODTEMA (CLAVE PRIMARIA), CODSUBTEMA (CLAVE PRIMARIA), TEMA, SUBTEMA)
+	CODTEMA Cadena fija de 5 caracteres máximo.
+	CODSUBTEMA Cadena fija de 10 caracteres máximo.
+	TEMA Cadena fija de 15 caracteres máximo.
+	SUBTEMA Cadena fija de 50 caracteres máximo.
+(CODTEMA, CODSUBTEMA ) ES CLAVE PRIMARIA*/
+
+CREATE TABLE CATEGORIA
+(
+    CODTEMA     CHAR(5) NOT NULL,
+    CODSUBTEMA  CHAR(10) NOT NULL,
+    TEMA        CHAR(15) NOT NULL,
+    SUBTEMA     CHAR(50) NOT NULL,
+    PRIMARY KEY (CODTEMA, CODSUBTEMA)
+) engine = InnoDB;
+
+/*R2 = Tabla EDITORIAL ( NUMED (CLAVE PRIMARIA), NOMBRE)
+	NUMED Entero (valor entre 1 y 999). CLAV. PRIMARIA
+Valor autoincrementado, comenzando en 1, incremento 1
+	NOMBRE Cadena fija, 30 caracteres máximo. Su valor no se repite.*/
+
+CREATE TABLE EDITORIAL
+(
+    NUMED   SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    NOMBRE  CHAR(30) NOT NULL UNIQUE,
+    PRIMARY KEY (NUMED)
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
+
+/*R3 = Tabla LIBRO ( ISBN (CLAVE PRIMARIA), TITULO , { CODTEMA , CODSUBTEMA } (FK1),
+	DESCRIPCION, PRECIO, EDITORIAL (FK2), FCHALTA)
+	ISBN Cadena fija de 15 caracteres máximo. CLAVE PRIMARIA
+	TITULO Cadena fija, 50 caracteres máximo.
+	CODTEMA Cadena fija de 5 caracteres máximo.
+	CODSUBTEMA Cadena fija de 10 caracteres máximo.
+	DESCRIPCION Cadena variable, 200 caract. máximo
+	PRECIO Valor real, entre 1.00 y 999.99 , dos decimales.
+	EDITORIAL Entero (valor entre 1 y 999)
+	CLAVE FORANEA, ref. tabla "EDITORIAL"
+	FCHALTA Fecha - hora, por defecto la actual
+(CODTEMA, CODSUBTEMA ) ES CLAVE FORANEA, ref. tabla "CATEGORIA"*/
+
+CREATE TABLE LIBRO
+(
+    ISBN        CHAR(15) NOT NULL,
+    TITULO      CHAR(50) NOT NULL,
+    CODTEMA     CHAR(5) NOT NULL,
+    CODSUBTEMA  CHAR(10) NOT NULL,
+    DESCRIPCION VARCHAR(200) NOT NULL,
+    PRECIO      DECIMAL(5,2) NOT NULL,
+    EDITORIAL   SMALLINT UNSIGNED NOT NULL,
+    FCHALTA     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (ISBN),
+    CONSTRAINT CK_PRECIO CHECK (PRECIO BETWEEN 1.00 AND 999.99),
+    CONSTRAINT FK_LIBRO_CATEGORIA FOREIGN KEY (CODTEMA, CODSUBTEMA) 
+        REFERENCES CATEGORIA(CODTEMA, CODSUBTEMA) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_LIBRO_EDITORIAL FOREIGN KEY (EDITORIAL) 
+        REFERENCES EDITORIAL(NUMED) ON DELETE RESTRICT ON UPDATE CASCADE
+) engine = InnoDB;
+
+/*R4 = Tabla AUTOR ( NUMAU (CLAVE PRIMARIA), NOMBRE)
+	NUMAU Entero (valor entre 1 y 999). CLAV. PRIMARIA
+Valor autoincrementado, comenzando en 1, incremento 1
+	NOMBRE Cadena fija, 30 caracteres máximo. Su valor no se repite.^*/
+
+CREATE TABLE AUTOR
+(
+    NUMAU   SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    NOMBRE  CHAR(30) NOT NULL UNIQUE,
+    PRIMARY KEY (NUMAU)
+) ENGINE = InnoDB AUTO_INCREMENT = 1;
+
+/*R5 = Tabla ESCRIBE ( ISBN  (CLAVE PRIMARIA)(FK3) , NUMAU (CLAVE PRIMARIA) (FK4) )
+	ISBN Cadena fija de 15 caracteres máximo. CLAVE PRIMARIA
+CLAVE FORANEA, ref. tabla "LIBRO"
+	NUMAU Entero (valor entre 1 y 999). CLAV. PRIMARIA
+CLAVE FORANEA, ref. tabla "AUTOR"*/
+
+CREATE TABLE ESCRIBE
+(
+    ISBN    CHAR(15) NOT NULL,
+    NUMAU   SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (ISBN, NUMAU),
+    CONSTRAINT FK_ESCRIBE_LIBRO FOREIGN KEY (ISBN) 
+        REFERENCES LIBRO(ISBN) ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT FK_ESCRIBE_AUTOR FOREIGN KEY (NUMAU) 
+        REFERENCES AUTOR(NUMAU) ON DELETE RESTRICT ON UPDATE CASCADE
+) engine = InnoDB;

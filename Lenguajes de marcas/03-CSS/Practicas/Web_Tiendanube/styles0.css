@@ -1,0 +1,369 @@
+/* ==================== */
+/*   Estilos Tiendanube */
+/* ==================== */
+
+/* ==================== */
+/*      CABECERA        */
+/* ==================== */
+
+/* 1. Estilizar el logotipo de la cabecera */
+/* body > header img → selecciona cualquier <img> que esté dentro del <header> que es hijo directo de <body> */
+/* No afecta a la imagen del autor, que está dentro de main > article > header */
+body > header img {
+  border-radius: 8px;
+  background-color: #f2f2f2;
+}
+
+/* 2. Subrayar solo los enlaces del menú principal del header */
+/* body > header nav a → <nav> dentro del <header> superior y todos sus <a> */
+/* No toca las migas de pan (<nav> que viene después del header) ni otros enlaces */
+body > header nav a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* 3. Modificar el color del primer enlace del menú */
+/* li:first-child → el primer <li> dentro del <ul> del menú */
+/* a → el enlace dentro de ese <li> */
+body > header nav li:first-child a {
+  color: #0066cc;
+}
+
+/* ==================== */
+/*    NAVEGACIÓN        */
+/* ==================== */
+
+/* 4. Cambiar el estilo de las migas de pan */
+/* body > nav → selecciona solo el <nav> que es hijo directo de <body> (las migas) */
+/* El <nav> del header no es hijo directo de body, así que queda fuera */
+body > nav a {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ==================== */
+/*      ARTÍCULO        */
+/* ==================== */
+
+/* 5. Resaltar el título principal del artículo */
+/* main article h1 → cualquier <h1> que esté dentro de un <article> dentro de <main> */
+/* En este documento solo existe ese h1 */
+main article h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+/* 6. Estilo solo para el nombre del autor */
+/* figcaption p:first-child → el primer <p> dentro de cada <figcaption> */
+/* Aquí solo hay un figcaption con dos <p>, así que se aplica al del autor */
+figcaption p:first-child {
+  font-weight: bold;
+  color: #333;
+}
+
+/* 7. Cambiar el color del tiempo de lectura */
+/* figcaption p:last-child → el último <p> dentro de figcaption (el que contiene <time> · <span>) */
+/* span → el <span> de "10 min de lectura" */
+figcaption p:last-child span {
+  color: #888;
+}
+
+/* 8. Formatear la lista de "Puntos destacados" */
+/* El <section> de "Puntos destacados" es hijo directo de <article>, mientras que otros <section> van dentro del <div> posterior */
+/* article > section → el primer <section> hijo directo del <article> (Puntos destacados) */
+/* ul li → los elementos de lista dentro de ese section */
+main article > section ul li {
+  padding-left: 1.2rem;
+  list-style-type: square;
+}
+
+/* 9. Estilo especial solo para el CTA "Crear tu tienda online ahora" */
+/* article > section → el section de Puntos destacados */
+/* > p > a → el <a> dentro del <p> que cuelga directamente de ese section */
+/* No afecta a otros enlaces "Crear tienda" existentes en otros bloques */
+main article > section > p > a {
+  background-color: #ffefc2;
+  padding: 6px 10px;
+}
+
+/* 10. Destacar los <em> solo dentro de listas en el artículo */
+/* article ul em → <em> dentro de <ul> dentro del <article> */
+/* article ol em → <em> dentro de <ol> dentro del <article> */
+/* Si en el futuro hubiese <em> en párrafos sueltos del artículo, no se verían afectados */
+article ul em,
+article ol em {
+  font-style: italic;
+  color: #c00;
+}
+
+/* ==================== */
+/*   PASO 1, 2, 3       */
+/* ==================== */
+
+/* 11. Cambiar el color de los <h3> dentro de Paso 1 */
+/* En el HTML, ese bloque es el segundo <section> dentro del <div> de la columna principal */
+/* section:nth-of-type(2) → el Paso 1 dentro de ese div */
+/* h3 → todos los <h3> dentro de Paso 1 (el de "Canales principales" y el del aside) */
+main article > div > section:nth-of-type(2) h3 {
+  color: #006699;
+}
+
+/* 12. Resaltar el <aside> dentro de Paso 1 */
+/* Ese <aside> está dentro del mismo <section> de Paso 1, no al mismo nivel que el resto */
+/* section:nth-of-type(2) > aside → solo el aside hijo directo del Paso 1 */
+/* No afecta al aside de la columna lateral, que cuelga directamente del <div> */
+main article > div > section:nth-of-type(2) > aside {
+  background-color: #f7fbff;
+  border: 1px solid #cce4ff;
+  padding: 1rem;
+}
+
+/* 13. Cambiar el color de los enlaces dentro de "Medios de pago" */
+/* "Medios de pago" es un <section> dentro del Paso 2 */
+/* Primer section:nth-of-type(3) → Paso 2 */
+/* Segundo section:nth-of-type(3) → el tercer <section> dentro de Paso 2, que es "Medios de pago" */
+/* a → todos los enlaces de ese bloque (incluye "Pago Nube" y las plataformas) */
+main article > div > section:nth-of-type(3) section:nth-of-type(3) a {
+  color: #0044aa;
+  text-decoration: underline;
+}
+
+/* 14. Dar estilo a las listas de Paso 3 */
+/* Paso 3 es el cuarto <section> dentro del <div> principal */
+/* section:nth-of-type(4) → Paso 3 */
+/* ul → todas las listas dentro de Paso 3 (la lista principal y la del sub-bloque "Recursos de referencia") */
+main article > div > section:nth-of-type(4) ul {
+  margin-left: 1.5rem;
+  list-style-type: circle;
+}
+
+/* ==================== */
+/*   COLUMNA LATERAL    */
+/* ==================== */
+
+/* 15. Cambiar el color de los enlaces del índice lateral */
+/* Ese índice está dentro de un <aside>, que cuelga de main > article > div */
+/* main article > div > aside nav a → los <a> del <nav> que está dentro del <aside> lateral */
+/* No afecta otros <nav> (como el de cabecera o el de migas) */
+main article > div > aside nav a {
+  color: #990000;
+}
+
+/* 16. Estilo especial para el CTA lateral */
+/* Este <section> es hijo directo del mismo <aside> lateral */
+/* aside > section → el <section> del CTA lateral (en este HTML solo hay uno ahí) */
+/* No afecta al <nav> del índice, que es hermano del section dentro del aside */
+main article > div > aside > section {
+  background-color: #fff2f2;
+  padding: 1rem;
+  border-left: 4px solid #ff6b6b;
+}
+
+/* ==================== */
+/*      PIE DE PÁGINA   */
+/* ==================== */
+
+/* 17. Estilizar el pie de página */
+/* Al final del documento hay un único <footer> con un <p> */
+/* Como solo hay un <p> en el footer, este selector es suficiente */
+footer p {
+  text-align: center;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* 18. Aplicar estilo al segundo <section> dentro de "Desarrollar tu oferta" */
+/* Dentro de Paso 2 (tercer <section> del <div> principal), los <section> internos son: */
+/* 1) "Diseño e identidad de marca", 2) "Medios de envío" ← este es el que queremos, 3) "Medios de pago" */
+/* section:nth-of-type(3) → Paso 2 */
+/* section:nth-of-type(2) dentro de él → el bloque "Medios de envío" */
+main article > div > section:nth-of-type(3) section:nth-of-type(2) {
+  border: 1px dashed #aaa;
+  padding: 1rem;
+}
+
+/* 19. Resaltar enlaces dentro de listas dentro del artículo */
+/* article li a → todo <a> contenido en un <li> que, a su vez, esté dentro del <article> */
+/* No afecta enlaces que estén directamente en un <p> sin <li> */
+article li a {
+  color: #cc6600;
+}
+
+/* 20. Estilo para todos los <strong> dentro de Paso 1 */
+/* En Paso 1, los <strong> aparecen dentro de la lista de "Canales principales" */
+/* section:nth-of-type(2) → Paso 1 */
+/* strong → cualquier <strong> dentro de ese bloque (los títulos de cada canal) */
+main article > div > section:nth-of-type(2) strong {
+  color: #005577;
+  font-weight: 700;
+}
+
+/* ==================== */
+/*    EFECTOS Y ESTADOS */
+/* ==================== */
+
+/* 21. Estilo :hover para el menú principal */
+/* Objetivo: solo cuando el usuario pasa el ratón por encima de los enlaces del menú principal */
+/* body > header nav a:hover → cualquier enlace dentro del <nav> del header, en estado hover */
+body > header nav a:hover {
+  color: #0099cc;
+}
+
+/* 22. Estilo :visited para enlaces del menú principal */
+/* Objetivo: solo los enlaces del menú principal cuando ya han sido visitados */
+/* a:visited es una pseudoclase de interacción que encaja con la teoría de pseudoclases */
+body > header nav a:visited {
+  color: #663399;
+}
+
+/* 23. Estilo :active para enlaces del menú principal */
+/* Objetivo: cambiar el estilo mientras se pulsa (clic) sobre un enlace del menú */
+/* Esto se nota justo en el momento del clic */
+body > header nav a:active {
+  opacity: 0.7;
+}
+
+/* 24. Resaltar el primer <li> de "Puntos destacados" */
+/* Objetivo: el primer ítem de la lista de Puntos destacados */
+/* Ese <section> es el primer <section> hijo de <article> */
+/* article > section → "Puntos destacados" */
+/* ul li:first-child → primer <li> de esa lista */
+main article > section ul li:first-child {
+  background-color: #fff7cc;
+}
+
+/* 25. Estilo al último <li> del primer <ul> de Paso 3 */
+/* Objetivo: el último <li> de la lista principal de Paso 3 (no la de "Recursos de referencia") */
+/* En Paso 3, la primera lista <ul> cuelga directamente del <section> */
+/* section:nth-of-type(4) → Paso 3 (dentro del div principal) */
+/* > ul > li:last-child → último li de la primera lista de ese paso */
+main article > div > section:nth-of-type(4) > ul > li:last-child {
+  font-style: italic;
+  color: #990000;
+}
+
+/* 26. Estilo para los <p> impares dentro de cada <section> */
+/* Objetivo: aplicar fondo solo a los párrafos impares (1º, 3º, 5º, …) dentro de cualquier <section> */
+/* p:nth-of-type(odd) → párrafos en posición impar entre sus hermanos <p> del mismo section */
+section p:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+/* 27. Aumentar el tamaño del segundo <h2> dentro del artículo */
+/* Con la estructura actual, los <h2> están repartidos en distintos <section> anidados */
+/* No hay una forma fiable de seleccionar "el segundo <h2>" solo con pseudoclases estructurales */
+/* Por eso es razonable introducir una clase para marcar ese subtítulo concreto */
+/* h2.subtitulo-principal → selector de tipo + clase (refuerza la teoría de especificidad) */
+h2.subtitulo-principal {
+  font-size: 1.9rem;
+}
+
+/* 28. Estilo para el primer enlace dentro del <footer> */
+/* Objetivo: dar estilo al primer enlace dentro del footer */
+/* En el HTML actual, el <footer> no tiene enlaces, así que la regla no tendrá efecto hasta que se añada uno */
+/* El ejercicio sigue siendo útil para que vean que la regla está bien construida */
+footer a:first-of-type {
+  text-decoration: underline;
+}
+
+/* 29. Estilo para el enlace "Crear tienda gratis" del header */
+/* Objetivo: solo el segundo enlace dentro del último <div> del header (CTA "Crear tienda gratis") */
+/* header > div:last-child → el <div> que contiene "Iniciar sesión" y "Crear tienda gratis" */
+/* a:last-child → el último enlace de ese div → "Crear tienda gratis" */
+body > header > div:last-child a:last-child {
+  background-color: #0074d9;
+  color: white;
+  padding: 0.5rem 1rem;
+}
+
+/* 30. Resaltar enlaces del menú principal cuando reciben foco */
+/* Objetivo: accesibilidad con teclado; cuando un enlace del menú principal tiene el foco (por tabulación) */
+/* :focus es una pseudoclase de interacción (igual familia que :hover en tu teoría) */
+/* Se aplica solo a los enlaces del menú principal */
+body > header nav a:focus {
+  outline: 3px solid #ff6600;
+}
+
+/* 31. :focus-visible en los enlaces del índice lateral */
+/* Objetivo: resaltar con borde solo cuando el usuario navega con teclado (no con ratón) */
+/* Selecciona los enlaces del <nav> que está dentro del <aside> lateral ("Acá vas a encontrar") */
+main article > div > aside nav a:focus-visible {
+  outline: 2px dashed #333;
+}
+
+/* 32. Hover sobre <li> del menú principal */
+/* Objetivo: aplicar el hover al <li> entero del menú principal */
+/* Afecta solo a los <li> del menú de navegación principal de la cabecera */
+body > header nav li:hover {
+  background-color: #eefaff;
+}
+
+/* 33. Enlaces dentro de <strong> */
+/* Objetivo: cambiar estilo de enlaces dentro de <strong> */
+/* En el HTML actual no hay <a> dentro de <strong>, pero la regla es correcta para cuando se añadan */
+strong a {
+  color: #cc5500;
+  font-weight: bold;
+}
+
+/* 34. Enlaces dentro de <em> */
+/* Objetivo: estilo solo para enlaces dentro de <em> */
+/* Actualmente tampoco hay <a> dentro de <em>, pero la regla es correcta */
+em a {
+  color: #aa0000;
+  text-decoration: underline;
+}
+
+/* 35. Primer enlace dentro de cada <section> */
+/* Objetivo: estilo para el primer enlace dentro de cada <section> */
+/* Aplica al primer <a> que aparezca dentro de cada <section> (Puntos destacados, Paso 1, Paso 2, Paso 3, etc.) */
+section a:first-of-type {
+  font-weight: bold;
+  color: #2255aa;
+}
+
+/* 36. Fondo del menú del header al hacer hover sobre su <ul> */
+/* Objetivo: cuando el usuario pasa el ratón por cualquier parte del <ul> (menú principal), el fondo del bloque cambia */
+body > header nav ul:hover {
+  background-color: #f0f8ff;
+}
+
+/* 37. Estilo al primer <section> dentro del <article> */
+/* Objetivo: estilo al primer <section> dentro del <article> */
+/* Ese primer <section> es el de "Puntos destacados" */
+/* article > section:first-of-type → el primer <section> hijo directo del <article> */
+main article > section:first-of-type {
+  border-top: 4px solid #0088cc;
+}
+
+/* 38. Ocultar enlaces cuyo title contenga "Más info" */
+/* Objetivo: ocultar visualmente todos los enlaces cuyo texto contenga 'Más info' */
+/* En CSS no se puede seleccionar por texto, así que usamos un atributo (como en [disabled]) */
+/* A continuación: añadir title="Más info" a esos enlaces y usar un selector de atributo simple */
+/* a[title="Más info"] → selector de atributo sencillo, alineado con la teoría */
+a[title="Más info"] {
+  display: none;
+}
+
+/* 39. Estilo para enlaces sin target definido */
+/* Objetivo: estilo para enlaces sin target definido */
+/* En el HTML, muchos enlaces del header y de las migas tienen target="XXXX", pero los enlaces del contenido principal no */
+/* La solución más directa usa la pseudoclase :not() junto con un selector de atributo */
+/* a:not([target]) → todos los <a> que no tienen atributo target */
+a:not([target]) {
+  border-bottom: 1px dotted #aaa;
+}
+
+/* 40. Efecto hover suave sobre imágenes dentro de <figure> */
+/* Objetivo: efecto hover sobre imágenes que están dentro de <figure>. No debe aplicarse a imágenes del header */
+/* El logotipo del header no está dentro de <figure>, pero las imágenes del autor y la ilustración del artículo sí */
+/* Para que el efecto sea suave, repartimos la declaración en dos reglas */
+/* main figure img → todas las imágenes en <figure> dentro de <main> */
+/* El logo del header (<header> ... <img ...>) no se ve afectado */
+main figure img {
+  transition: 0.2s ease-in-out;
+}
+
+main figure img:hover {
+  transform: scale(1.03);
+}

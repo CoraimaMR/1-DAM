@@ -1,0 +1,302 @@
+<!-- ============================================================
+
+     ecommerce.dtd
+
+     DTD para el XML del e-commerce "TechNova"
+
+ 
+
+     OBJETIVO
+
+     - Validar la ESTRUCTURA del XML (orden y presencia de etiquetas).
+
+     - Validar ATRIBUTOS obligatorios y valores enumerados (true/false).
+
+     - Validar REFERENCIAS internas con ID / IDREF:
+
+         * categoriaRef -> debe apuntar a una <categoria id="...">
+
+         * usuarioRef   -> debe apuntar a un <usuario id="...">
+
+         * productoRef  -> debe apuntar a un <producto id="...">
+
+ 
+
+     NOTA
+
+     - En DTD, los números/fechas se validan como texto (#PCDATA o CDATA).
+
+     - ID / IDREF deben ser nombres XML válidos: empiezan por letra o "_".
+
+       (En XML: c-audio, P1, U-001, O-001... son ID válidos.)
+
+   ============================================================ -->
+
+ 
+
+<!-- =========================
+
+     1) RAÍZ
+
+========================= -->
+
+<!-- El documento debe tener tienda, catálogo, usuarios y pedidos EN ESE ORDEN -->
+
+<!ELEMENT ecommerce (tienda, catalogo, usuarios, pedidos)>
+
+<!ATTLIST ecommerce
+
+          version     CDATA   #REQUIRED
+
+          fechaExport CDATA   #REQUIRED>
+
+ 
+
+<!-- =========================
+
+     2) TIENDA
+
+========================= -->
+
+<!ELEMENT tienda (nombre, ivaPct, envioGratisDesde, telefonoSoporte, direccion, ultimaActualizacion)>
+
+<!ATTLIST tienda
+
+          id      ID              #REQUIRED
+
+          abierta (true|false)    #REQUIRED
+
+          moneda  CDATA           #REQUIRED
+
+          pais    CDATA           #REQUIRED>
+
+ 
+
+<!-- Reutilizamos <nombre> en varios contextos: tienda, categoria, producto, usuario -->
+
+<!ELEMENT nombre (#PCDATA)>
+
+ 
+
+<!ELEMENT ivaPct (#PCDATA)>
+
+<!ELEMENT envioGratisDesde (#PCDATA)>
+
+ 
+
+<!-- En el XML tiene que aparecer etiqueta vacía: <telefonoSoporte /> -->
+
+<!ELEMENT telefonoSoporte EMPTY>
+
+ 
+
+<!ELEMENT direccion (ciudad, codigoPostal)>
+
+<!ELEMENT ciudad (#PCDATA)>
+
+<!ELEMENT codigoPostal (#PCDATA)>
+
+ 
+
+<!ELEMENT ultimaActualizacion (#PCDATA)>
+
+ 
+
+<!-- =========================
+
+     3) CATÁLOGO
+
+========================= -->
+
+<!ELEMENT catalogo (categorias, productos)>
+
+ 
+
+<!-- Categorías: 1 o más -->
+
+<!ELEMENT categorias (categoria+)>
+
+<!ELEMENT categoria (nombre)>
+
+<!ATTLIST categoria
+
+          id ID #REQUIRED>
+
+ 
+
+<!-- Productos: 1 o más -->
+
+<!ELEMENT productos (producto+)>
+
+ 
+
+<!-- Un producto siempre tiene: nombre, marca, precio, stock, shipping, tags
+
+     y opcionalmente variantes (solo aparece en el producto P2) -->
+
+<!ELEMENT producto (nombre, marca, precio, stock, shipping, variantes?, tags)>
+
+<!ATTLIST producto
+
+          id          ID              #REQUIRED
+
+          categoriaRef IDREF          #REQUIRED
+
+          activo      (true|false)    #REQUIRED>
+
+ 
+
+<!ELEMENT marca (#PCDATA)>
+
+ 
+
+<!-- Precio: base obligatorio y atributo ivaPct obligatorio -->
+
+<!ELEMENT precio (base)>
+
+<!ATTLIST precio
+
+          ivaPct CDATA #REQUIRED>
+
+<!ELEMENT base (#PCDATA)>
+
+ 
+
+<!-- Stock del producto: 1 o más almacenes, o unidades directas (en variantes) -->
+
+<!ELEMENT stock (almacen+ | unidades)>
+<!ELEMENT almacen (unidades)>
+
+<!ATTLIST almacen
+
+          codigo CDATA #REQUIRED>
+
+<!ELEMENT unidades (#PCDATA)>
+
+ 
+
+<!-- Datos de envío -->
+
+<!ELEMENT shipping (pesoKg, fragil)>
+
+<!ELEMENT pesoKg (#PCDATA)>
+
+<!ELEMENT fragil (#PCDATA)>
+
+ 
+
+<!-- Tags: 1 o más -->
+
+<!ELEMENT tags (tag+)>
+
+<!ELEMENT tag (#PCDATA)>
+
+ 
+
+<!-- ===== Variantes (opcionales en producto) ===== -->
+
+ 
+
+<!-- Variantes: 1 o más -->
+
+<!ELEMENT variantes (variante+)>
+
+ 
+
+<!-- Cada variante incluye atributos (almacenamiento y color) + stock -->
+
+<!ELEMENT variante (atributos, stock)>
+
+<!ATTLIST variante
+
+          id ID #REQUIRED>
+
+ 
+
+<!ELEMENT atributos (almacenamiento, color)>
+
+<!ELEMENT almacenamiento (#PCDATA)>
+
+<!ELEMENT color (#PCDATA)>
+
+ 
+
+<!-- =========================
+
+     4) USUARIOS
+
+========================= -->
+
+<!ELEMENT usuarios (usuario+)>
+
+<!ELEMENT usuario (nombre, email)>
+
+<!ATTLIST usuario
+
+          id      ID              #REQUIRED
+
+          premium (true|false)    #REQUIRED>
+
+ 
+
+<!ELEMENT email (#PCDATA)>
+
+ 
+
+<!-- =========================
+
+     5) PEDIDOS
+
+========================= -->
+
+<!ELEMENT pedidos (pedido+)>
+
+ 
+
+<!-- Un pedido contiene lineas y totales, en ese orden -->
+
+<!ELEMENT pedido (lineas, totales)>
+
+<!ATTLIST pedido
+
+          id        ID      #REQUIRED
+
+          usuarioRef IDREF  #REQUIRED
+
+          fecha     CDATA   #REQUIRED
+
+          estado    CDATA   #REQUIRED>
+
+ 
+
+<!-- Líneas: 1 o más -->
+
+<!ELEMENT lineas (linea+)>
+
+ 
+
+<!-- Cada línea contiene cantidad y precioUnitario -->
+
+<!ELEMENT linea (cantidad, precioUnitario)>
+
+<!ATTLIST linea
+
+          productoRef IDREF #REQUIRED>
+
+ 
+
+<!ELEMENT cantidad (#PCDATA)>
+
+<!ELEMENT precioUnitario (#PCDATA)>
+
+ 
+
+<!-- Totales: en el XML estarán vacíos (self-closing) -->
+
+<!ELEMENT totales (subtotal, iva, total)>
+
+<!ELEMENT subtotal EMPTY>
+
+<!ELEMENT iva EMPTY>
+
+<!ELEMENT total EMPTY>

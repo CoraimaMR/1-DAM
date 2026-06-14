@@ -1,0 +1,224 @@
+/* ==================== */
+/*   Estilos Tiendanube */
+/* ==================== */
+
+/* ==================== */
+/*      CABECERA        */
+/* ==================== */
+
+/* 1. Estilizar el logotipo de la cabecera */
+.logo img {
+  border-radius: 8px;
+  background-color: #f2f2f2;
+}
+
+/* 2. Subrayar solo los enlaces del menú principal */
+.menu-principal a {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* 3. Modificar el color del primer enlace del menú */
+.menu-principal ul li:first-child a {
+  color: #0066cc;
+}
+
+/* ==================== */
+/*    NAVEGACIÓN        */
+/* ==================== */
+
+/* 4. Cambiar el estilo de las migas de pan */
+.migas a {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ==================== */
+/*      ARTÍCULO        */
+/* ==================== */
+
+/* 5. Resaltar el título del artículo principal */
+h1 {
+  font-size: 2rem;
+  color: #222;
+}
+
+/* 6. Aplicar estilo solo al nombre del autor */
+.autor figcaption p:first-of-type {
+  font-weight: bold;
+  color: #333;
+}
+
+/* 7. Cambiar el color del tiempo de lectura */
+.autor figcaption p:nth-of-type(2) {
+  color: #888;
+}
+
+/* 8. Formatear la lista de "Puntos destacados" */
+.puntos-destacados ul > li {
+  padding-left: 1.2rem;
+  list-style-type: square;
+}
+
+/* 9. Estilo especial para el enlace CTA dentro de "Puntos destacados" */
+.puntos-destacados a {
+  background-color: #ffefc2;
+  padding: 6px 10px;
+}
+
+/* 10. Destacar los <em> solo dentro de listas en el artículo */
+article ul em,
+article ol em {
+  font-style: italic;
+  color: #c00;
+}
+
+/* ==================== */
+/*   COLUMNA LATERAL    */
+/* ==================== */
+
+/* 11. Cambiar el color de los h3 */
+section h3 {
+  color: #006699;
+}
+
+/* 12. Resaltar el bloque aside lateral */
+.columna-izquierda aside {
+  background-color: #f7fbff;
+  border: 1px solid #cce4ff;
+  padding: 1rem;
+}
+
+/* 13. Cambiar el color de los enlaces */
+section a {
+  color: #0044aa;
+  text-decoration: underline;
+}
+
+/* 14. Dar estilo a las listas */
+section ul {
+  margin-left: 1.5rem;
+  list-style-type: circle;
+}
+
+/* 15. Cambiar el color de los enlaces dentro del índice lateral */
+.indice-articulo a {
+  color: #990000;
+}
+
+/* 16. Aplicar estilo especial al CTA lateral */
+.cta-lateral {
+  background-color: #fff2f2;
+  padding: 1rem;
+  border-left: 4px solid #ff6b6b;
+}
+
+/* ==================== */
+/*      PIE DE PÁGINA   */
+/* ==================== */
+
+/* 17. Estilizar el pie de página */
+footer > p {
+  text-align: center;
+  color: #777;
+  font-size: 0.85rem;
+}
+
+/* ==================== */
+/*    EFECTOS Y ESTADOS */
+/* ==================== */
+
+/* 18. Resaltar el primer li de la lista "Puntos destacados" */
+.puntos-destacados ul > li:first-child {
+  background-color: #fff7cc;
+}
+
+/* 19. Estilo al último li de las listas */
+section ul > li:last-child {
+  font-style: italic;
+  color: #990000;
+}
+
+/* 20. Dar estilo solo a los p impares dentro de un section */
+section p:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+/* 21. Aumentar el tamaño de letra del segundo h2 */
+article h2:nth-of-type(2) {
+  font-size: 1.9rem;
+}
+
+/* 22. Estilo para el primer enlace dentro del footer */
+footer a:first-of-type {
+  text-decoration: underline;
+}
+
+/* 23. Estilo hover para el menú principal */
+.menu-principal ul > li > a:hover {
+  color: #0099cc;
+}
+
+/* 24. Estilo para enlaces visitados del menú principal */
+.menu-principal ul > li > a:visited {
+  color: #663399;
+}
+
+/* 25. Estilo para el enlace activo del menú */
+.menu-principal ul > li > a:active {
+  opacity: 0.7;
+}
+
+/* 26. Estilo para el li al pasar por encima */
+.menu-principal ul > li:hover {
+  background-color: #eefaff;
+}
+
+/* 27. Cambiar el fondo del menú al hacer hover */
+.menu-principal ul:hover {
+  background-color: #f0f8ff;
+}
+
+/* 28. Resaltar el enlace con foco por teclado */
+.menu-principal ul > li > a:focus {
+  outline: 3px solid #ff6600;
+}
+
+/* 29. Estilo cuando el enlace está en estado :focus-visible */
+.indice-articulo a:focus-visible {
+  outline: 2px dashed #333;
+}
+
+/* 30. Cambiar estilo de enlaces dentro de strong */
+strong a {
+  color: #cc5500;
+  font-weight: bold;
+}
+
+/* 31. Estilo solo para enlaces dentro de em */
+em a {
+  color: #aa0000;
+  text-decoration: underline;
+}
+
+/* 32. Estilo para el primer enlace dentro de cada section */
+section a:first-of-type {
+  font-weight: bold;
+  color: #2255aa;
+}
+
+/* 33. Ocultar visualmente enlaces cuyo title contenga "Más info" */
+a[title*="Más info"] {
+  display: none;
+}
+
+/* 34. Estilo para enlaces sin target definido */
+a:not([target]) {
+  border-bottom: 1px dotted #aaa;
+}
+
+/* 35. Efecto hover sobre imágenes que están dentro de figure */
+figure img:hover {
+  transform: scale(1.03);
+  transition: 0.2s ease-in-out;
+}

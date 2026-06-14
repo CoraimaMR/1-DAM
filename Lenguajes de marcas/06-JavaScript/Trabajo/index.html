@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tienda Gaming - Coraima Mera Rodríguez</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 class="page-title">Tienda Gaming</h1>
+
+      <div class="header-controls">
+        <button
+          class="menu-button"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          ☰ Menú
+        </button>
+
+        <nav class="nav" id="main-nav">
+          <a href="#">Inicio</a>
+          <a href="#">Catálogo</a>
+          <a href="#">Ofertas</a>
+          <a href="#">Contacto</a>
+        </nav>
+
+        <div class="cart-info">Carrito: <span class="cart-count">0</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h2 class="hero-title">Bienvenido</h2>
+        <p class="hero-text"></p>
+      </section>
+
+      <section class="panel">
+        <h2>Buscador</h2>
+
+        <input type="text" class="search" placeholder="Buscar juego..." />
+        <button class="search-btn">Buscar</button>
+
+        <p class="search-result"></p>
+      </section>
+
+      <section class="catalogo">
+        <h2>Catálogo dinámico</h2>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Cyberpunk 2077</h3>
+            <p class="price">14.99€</p>
+            <button class="buy-btn">Comprar</button>
+          </div>
+
+          <div class="card">
+            <h3>Elden Ring</h3>
+            <p class="price">56.99€</p>
+            <button class="buy-btn">Comprar</button>
+          </div>
+
+          <div class="card">
+            <h3>Halo Infinite</h3>
+            <p class="price">39.99€</p>
+            <button class="buy-btn">Comprar</button>
+          </div>
+
+          <div class="card">
+            <h3>Zelda TOTK</h3>
+            <p class="price">59.99€</p>
+            <button class="buy-btn">Comprar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Coraima Mera Rodríguez</p>
+      <p>1º DAM</p>
+    </footer>
+
+    <!-- MODAL DEL CARRITO -->
+    <div class="cart-modal-overlay" id="cartModal">
+      <div class="cart-modal-content">
+        <div class="cart-modal-header">
+          <h2>Carrito de Compras</h2>
+          <button class="cart-close-btn" id="cartCloseBtn">✕</button>
+        </div>
+
+        <div class="cart-modal-body" id="cartModalBody">
+          <!-- El contenido del carrito se genera aquí con JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

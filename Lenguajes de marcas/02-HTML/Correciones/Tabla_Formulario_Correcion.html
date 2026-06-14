@@ -1,0 +1,271 @@
+<html>
+  <body>
+    <p>
+      --------------------------------------- Tabla
+      ----------------------------------
+    </p>
+    <table>
+      <caption>
+        Principales criptomonedas: precio, 24 h y gráfico
+      </caption>
+
+      <thead>
+        <tr>
+          <th scope="col">Activo</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Diferencia (24&nbsp;h)</th>
+          <th scope="col">Gráfico</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">
+            <img
+              src="https://assets.bitvavo.com/assets/BTC/icon-light-ec60f889.svg"
+              alt="Bitcoin"
+              width="24"
+              height="24"
+            />
+            <span>Bitcoin</span>
+            <small>BTC</small>
+          </th>
+          <td>87.657&nbsp;€</td>
+          <td><span>-1,57&nbsp;%</span></td>
+          <td>
+            <img
+              src="grafico-bitcoin.png"
+              alt="Gráfico de Bitcoin"
+              width="100"
+              height="50"
+            />
+          </td>
+          <!-- Imagen del gráfico -->
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <img
+              src="https://assets.bitvavo.com/assets/XRP/icon-light-2a53a81e.svg"
+              alt="XRP"
+              width="24"
+              height="24"
+            />
+            <span>XRP</span>
+            <small>XRP</small>
+          </th>
+          <td>2,0262&nbsp;€</td>
+          <td><span>-3,23&nbsp;%</span></td>
+          <td>
+            <img
+              src="grafico-xrp.png"
+              alt="Gráfico de XRP"
+              width="100"
+              height="50"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <img
+              src="https://assets.bitvavo.com/assets/ETH/icon-light-bb9ff6f9.svg"
+              alt="Ethereum"
+              width="24"
+              height="24"
+            />
+            <span>Ethereum</span>
+            <small>ETH</small>
+          </th>
+          <td>2.966,5&nbsp;€</td>
+          <td><span>-0,85&nbsp;%</span></td>
+          <td>
+            <img
+              src="grafico-ethereum.png"
+              alt="Gráfico de Ethereum"
+              width="100"
+              height="50"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <img
+              src="https://assets.bitvavo.com/assets/SOL/icon-light-744c0222.svg"
+              alt="Solana"
+              width="24"
+              height="24"
+            />
+            <span>Solana</span>
+            <small>SOL</small>
+          </th>
+          <td>132,43&nbsp;€</td>
+          <td><span>-3,42&nbsp;%</span></td>
+          <td>
+            <img
+              src="grafico-solana.png"
+              alt="Gráfico de Solana"
+              width="100"
+              height="50"
+            />
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">
+            <img
+              src="https://assets.bitvavo.com/assets/ADA/icon-light-1dcabb55.svg"
+              alt="Cardano"
+              width="24"
+              height="24"
+            />
+            <span>Cardano</span>
+            <small>ADA</small>
+          </th>
+          <td>0,47476&nbsp;€</td>
+          <td><span>-3,33&nbsp;%</span></td>
+          <td>
+            <img
+              src="grafico-cardano.png"
+              alt="Gráfico de Cardano"
+              width="100"
+              height="50"
+            />
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <a href="/es/markets">Ver las 421 criptomonedas →</a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p>
+      --------------------------------------- Fomulario
+      ----------------------------------
+    </p>
+    <form
+      action="/contacto"
+      method="post"
+      onsubmit="event.preventDefault(); /* aquí no se envía nada */"
+    >
+      <!-- action: endpoint que recibe los datos; method="post" para enviar el cuerpo del formulario -->
+
+      <h3>Déjanos tus datos</h3>
+      <!-- Título visible que contextualiza el formulario -->
+
+      <fieldset>
+        <!-- Agrupa campos relacionados y ayuda a la accesibilidad -->
+        <label for="full_name">Tu nombre y apellidos</label>
+        <!-- 'for' vincula el label con el control por su id -->
+        <input
+          id="full_name"
+          name="full_name"
+          type="text"
+          required
+          autocomplete="name"
+          inputmode="text"
+        />
+        <!-- id para el label; name clave que llega al servidor; type="text" básico; required activa validación nativa; autocomplete sugiere datos guardados; inputmode mejora teclado móvil -->
+      </fieldset>
+      <!-- Cierre del grupo de "nombre" -->
+
+      <fieldset>
+        <!-- Grupo del email -->
+        <label for="email">Tu email</label>
+        <!-- Etiqueta accesible para el campo de correo -->
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          inputmode="email"
+        />
+        <!-- type="email" valida formato; required obliga a completarlo; autocomplete e inputmode facilitan entrada y teclado -->
+      </fieldset>
+      <!-- Cierre del grupo de "email" -->
+
+      <fieldset>
+        <!-- Grupo del motivo -->
+        <label for="reason">Indícanos el motivo del contacto</label>
+        <!-- Describe el propósito del selector -->
+        <select id="reason" name="reason" required>
+          <!-- Select nativo; required evita dejar el placeholder seleccionado -->
+          <option value="" disabled selected>Seleccionar</option>
+          <!-- Placeholder no enviable -->
+          <option value="1">Consulta o duda</option>
+          <!-- Opción válida -->
+          <option value="2">Problema usando idealista</option>
+          <!-- Opción válida -->
+          <option value="3">Reportar fraude</option>
+          <!-- Opción válida -->
+          <option value="4">Sugerencia de mejora</option>
+          <!-- Opción válida -->
+          <option value="5">Error en precio o dirección de mi anuncio</option>
+          <!-- Opción válida -->
+          <option value="6">Reportar contenido ilegal o inapropiado</option>
+          <!-- Opción válida -->
+          <option value="7">Problema con servicio de pago</option>
+          <!-- Opción válida -->
+        </select>
+        <!-- Control nativo, accesible y compatible con teclado/lector de pantalla -->
+      </fieldset>
+      <!-- Cierre del grupo de "motivo" -->
+
+      <fieldset>
+        <!-- Grupo del mensaje -->
+        <label for="message">Tu mensaje</label>
+        <!-- Etiqueta accesible para el textarea -->
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          maxlength="1000"
+          required
+          aria-describedby="message_help"
+        ></textarea>
+        <!-- rows fija altura inicial; maxlength limita a 1000; required lo hace obligatorio; aria-describedby enlaza texto de ayuda/contador -->
+        <span id="message_help">0/1000</span>
+        <!-- Indicador visual del límite; sirve como ayuda accesible al estar referenciado -->
+      </fieldset>
+      <!-- Cierre del grupo de "mensaje" -->
+
+      <fieldset>
+        <!-- Grupo de referencia del anuncio/contenido -->
+        <label for="reference"
+          >Anuncio o contenido al que hace referencia</label
+        >
+        <!-- Describe el campo -->
+        <input
+          id="reference"
+          name="reference"
+          type="url"
+          placeholder="URL de la página o código del anuncio"
+          autocomplete="url"
+          inputmode="url"
+        />
+        <!-- type="url" aporta validación si el usuario introduce una URL; placeholder guía; autocomplete e inputmode optimizan la entrada -->
+        <span aria-hidden="true">URL de la página o código del anuncio</span>
+        <!-- Texto auxiliar; aria-hidden porque la info ya la cubren label/placeholder -->
+      </fieldset>
+      <!-- Cierre del grupo de "referencia" -->
+
+      <button type="submit">Contactar</button>
+      <!-- Envía el formulario al 'action' usando el método especificado -->
+
+      <p>
+        Al contactar declaras haber leído nuestra
+        <a href="/privacidad" target="_blank" rel="noopener noreferrer"
+          >política de privacidad</a
+        >
+      </p>
+      <!-- Aviso legal; target abre en nueva pestaña y rel protege frente a window.opener -->
+    </form>
+    <!-- Cierre del formulario -->
+  </body>
+</html>

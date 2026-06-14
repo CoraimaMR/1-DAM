@@ -1,0 +1,55 @@
+<!ELEMENT parking (plazas, vehiculos, estancias)>
+
+<!ATTLIST parking
+
+          id     ID    #REQUIRED
+
+          nombre CDATA #REQUIRED
+
+          ciudad CDATA #REQUIRED>
+
+ 
+
+<!ELEMENT plazas (plaza+)>
+
+<!ELEMENT plaza EMPTY>
+
+<!ATTLIST plaza
+
+          id     ID              #REQUIRED
+
+          tipo   (coche|moto)    #REQUIRED
+
+          estado (libre|ocupada) #REQUIRED>
+
+ 
+
+<!ELEMENT vehiculos (vehiculo+)>
+
+<!ELEMENT vehiculo EMPTY>
+
+<!ATTLIST vehiculo
+
+          id       ID            #REQUIRED
+
+          matricula CDATA        #REQUIRED
+
+          tipo     (coche|moto)  #REQUIRED>
+
+ 
+
+<!ELEMENT estancias (estancia*)>
+
+<!ELEMENT estancia EMPTY>
+
+<!ATTLIST estancia
+
+          id          ID     #REQUIRED
+
+          plazaRef    IDREF  #REQUIRED
+
+          vehiculoRef IDREF  #REQUIRED
+
+          entrada     CDATA  #REQUIRED
+
+          salida      CDATA  #REQUIRED>

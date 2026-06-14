@@ -1,0 +1,47 @@
+/*------------ FORMATO GENERAL ------------*/
+* {
+  /* Margenes de la página */
+  margin: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  /* Fuente por defecto */
+  font-family: Arial, sans-serif;
+  /* Color de fondo */
+  background-color: #fcaad7;
+  /* Color de texto */
+  color: #333;
+}
+
+/*-----------------------------------------------
+--------------------- CLASES --------------------
+-----------------------------------------------*/
+
+/*------------ CLASS="LISTA" ------------*/
+.lista {
+  /* Quitar la enumeración a li */
+  list-style: none;
+  /* Espaciado entre los elementos */
+  margin-bottom: 10px;
+}
+
+/*------------ CLASS="FORMATO" ------------*/
+.formato {
+  /* Cambiar el color de fondo */
+  background-color: rgb(59, 59, 59);
+  /* Cambiar el color del texto */
+  color: rgb(255, 143, 207);
+  /* Cambiar el tamaño de la fuente */
+  font-size: 16px;
+  /* Centrar el texto */
+  text-align: center;
+}
+
+/*-----------------------------------------------
+--------------------- first --------------------
+-----------------------------------------------*/
+
+/*------------ Primer h2 de header ------------*/
+header h2:first-of-type {
+  font-size: 2.5rem;
+  color: #ff3366;
+}

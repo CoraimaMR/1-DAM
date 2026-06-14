@@ -1,0 +1,123 @@
+{
+  "tienda": {
+    "nombre": "TechNova",
+    "moneda": "EUR",
+    "pais": "ES",
+    "abierta": true,
+    "iva": 21,
+    "envio_gratis_desde": 49.99,
+    "telefono_soporte": null,
+    "direccion": {
+      "ciudad": "Rota",
+      "codigo_postal": "11520"
+    },
+    "ultima_actualizacion": "2026-01-07T13:15:00+01:00"
+  },
+  "catalogo": {
+    "categorias": ["movil", "audio", "gaming"],
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Producto1",
+        "marca": "Marca1",
+        "categoriaID": { "id": 1, "nombre": "movil" },
+        "precio": { "base": 199.99, "iva": 21, "total": 242.98 },
+        "stock": [
+          { "almacen1": "Rota", "unidades": 100 },
+          { "almacen2": "Jerez", "unidades": 150 }
+        ],
+        "activo": true,
+        "tags": ["nuevo", "movil"],
+        "shipping": {
+          "peso": "200g",
+          "fragil": true
+        }
+      },
+      {
+        "id": 2,
+        "nombre": "Producto2",
+        "marca": "Marca2",
+        "categoriaID": { "id": 2, "nombre": "audio" },
+        "precio": { "base": 89.99, "iva": 21, "total": 108.89 },
+        "stock": [
+          { "almacen1": "Rota", "unidades": 200 },
+          { "almacen2": "Jerez", "unidades": 0 }
+        ],
+        "activo": true,
+        "tags": ["oferta", "audio"],
+        "shipping": {
+          "peso": "500g",
+          "fragil": false
+        }
+      },
+      {
+        "id": 3,
+        "nombre": "Producto3",
+        "marca": "Marca3",
+        "categoriaID": { "id": 3, "nombre": "gaming" },
+        "variantes": [
+          {
+            "id": 3.1,
+            "nombre": "Producto3.1",
+            "precio": { "base": 59.99, "iva": 21, "total": 72.59 },
+            "stock": [
+              { "almacen1": "Rota", "unidades": 0 },
+              { "almacen2": "Jerez", "unidades": 50 }
+            ],
+            "activo": false,
+            "tags": ["gaming", "descontinuado"],
+            "atributos": {
+              "color": "negro",
+              "memoria": "16GB"
+            },
+            "Caracteristicas1": {
+              "CaracteristicaA": "ValorA",
+              "CaracteristicaB": "ValorB"
+            },
+            "Caracteristicas2": {
+              "CaracteristicaC": "ValorC",
+              "CaracteristicaD": "ValorD"
+            }
+          },
+          {
+            "id": 3.2,
+            "nombre": "Producto3.2",
+            "precio": { "base": 79.99, "iva": 21, "total": 96.79 },
+            "stock": [
+              { "almacen1": "Rota", "unidades": 30 },
+              { "almacen2": "Jerez", "unidades": 70 }
+            ],
+            "activo": true,
+            "tags": ["gaming", "nuevo"],
+            "atributos": {
+              "color": "blanco",
+              "memoria": "32GB"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "usuarios": [
+    {
+      "id": "USR-01",
+      "nombre": "Coraima Mera",
+      "email": "cmerrod1503@g.educaand.es",
+      "premium": true
+    }
+  ],
+  "pedidos": {
+    "pedidoID": "PED-1001",
+    "usuarioID": "USR-01",
+    "fecha": "2026-01-10T10:30:00+01:00",
+    "estado": "procesando",
+    "lineas": {
+      "productoID": 1,
+      "cantidad": 2,
+      "precioUnitario": 199.99
+    },
+    "subtotal": null,
+    "iva": null,
+    "total": null
+  }
+}

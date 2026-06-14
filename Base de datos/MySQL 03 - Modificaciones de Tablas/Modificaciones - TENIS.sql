@@ -1,0 +1,52 @@
+/******************************* Ejercicio 06.06 *******************************
+Modifica la base de datos llamada "tenis" de la forma que se indica:*/
+USE TENIS;
+
+/*• Tabla NOMBRES_TORNEO: La categoria podrá tomar nuevos valores :
+ROLAND GARROS, WIMBLEDON, MUTUA MADRID OPEN, MIAMI OPEN.*/
+ALTER TABLE NOMBRES_TORNEO
+	DROP COLUMN categoria,
+	ADD COLUMN CATEGORIA ENUM('ROLAND GARROS','WIMBLEDON','MUTUA MADRID OPEN','MIAMI OPEN');
+
+/*• Tabla TENISTA: Añade una columna ESTATURA de tipo real (2 decimales).*/
+ALTER TABLE TENISTA
+	ADD COLUMN ESTATURA DECIMAL(5,2);
+
+/*• Tabla NOMBRES_TORNEO: Añade las columnas CIUDAD y PAIS, ambas de
+tipo cadena fija de 30 caract. Máximo. Por otro lado, redefine la columna
+NOMBRE de modo que no pueda tomar valores repetidos.*/
+ALTER TABLE NOMBRES_TORNEO
+	ADD COLUMN CIUDAD CHAR(30),
+	ADD COLUMN PAIS CHAR(30),
+	MODIFY COLUMN NOMBRE VARCHAR(100) UNIQUE;
+
+/*• Modifica la columna NACION, en todas las tablas que aparezca, de modo
+que tenga 30 caracteres máximo.*/
+ALTER TABLE TENISTA
+	MODIFY COLUMN NACION VARCHAR(30);
+
+ALTER TABLE ENTRENADOR
+	MODIFY COLUMN NACION VARCHAR(30);
+
+/*• Modifica todas las claves foráneas de modo que el borrado sea restringido
+y la actualización en cascada.*/
+ALTER TABLE TORNEO 
+	DROP FOREIGN KEY FK_TORNEO_NOMBRETORNEO; 
+ALTER TABLE TORNEO 
+    ADD CONSTRAINT FK_TORNEO_NOMBRETORNEO
+    FOREIGN KEY (CODTORNEO) REFERENCES nombres_torneo(CODIGO) 
+    ON DELETE RESTRICT ON UPDATE CASCADE;
+
+ALTER TABLE PARTICIPA 
+	DROP FOREIGN KEY FK_PARTICIPA_NOMBRESTORNEO; 
+ALTER TABLE PARTICIPA 
+    ADD CONSTRAINT FK_PARTICIPA_NOMBRESTORNEO
+    FOREIGN KEY (CODTORNEO, FECHA) REFERENCES nombres_torneo(CODIGO, FECHA) 
+    ON DELETE RESTRICT ON UPDATE CASCADE;
+    
+ALTER TABLE PARTICIPA 
+	DROP FOREIGN KEY FK_PARTICIPA_TENISTA; 
+ALTER TABLE PARTICIPA 
+    ADD CONSTRAINT FK_PARTICIPA_TENISTA
+    FOREIGN KEY (NUMTEN) REFERENCES tenista(NUMTEN) 
+    ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE ecommerce SYSTEM "ecommerce.dtd">
+
+<ecommerce version="1.0" fechaExport="2026-01-20">
+
+  <tienda id="T-001" abierta="true" moneda="EUR" pais="ES">
+    <nombre>TechNova</nombre>
+    <ivaPct>21</ivaPct>
+    <envioGratisDesde>49.99</envioGratisDesde>
+    <telefonoSoporte />
+    <direccion>
+      <ciudad>Rota</ciudad>
+      <codigoPostal>11520</codigoPostal>
+    </direccion>
+    <ultimaActualizacion>2026-01-07T13:15:00+01:00</ultimaActualizacion>
+  </tienda>
+
+  <catalogo>
+    <categorias>
+      <categoria id="c-audio">
+        <nombre>Audio</nombre>
+      </categoria>
+      <categoria id="c-peripherals">
+        <nombre>Periféricos</nombre>
+      </categoria>
+    </categorias>
+ 
+    <productos>
+
+      <producto id="P1" categoriaRef="c-audio" activo="true">
+        <nombre>Auriculares ANC Pro</nombre>
+        <marca>SonicWave</marca>
+        <precio ivaPct="21">
+          <base>79.99</base>
+        </precio>
+        <stock>
+          <almacen codigo="MAD-01">
+            <unidades>0</unidades>
+          </almacen>
+          <almacen codigo="BCN-01">
+            <unidades>4</unidades>
+          </almacen>
+        </stock>
+        <shipping>
+          <pesoKg>0.25</pesoKg>
+          <fragil>false</fragil>
+        </shipping>
+        <tags>
+          <tag>anc</tag>
+          <tag>bluetooth</tag>
+          <tag>viaje</tag>
+        </tags>
+      </producto>
+
+      <producto id="P2" categoriaRef="c-peripherals" activo="true">
+        <nombre>Smartphone Nova X</nombre>
+        <marca>TechNova</marca>
+        <precio ivaPct="21">
+          <base>399.00</base>
+        </precio>
+        <stock>
+          <almacen codigo="SEV-01">
+            <unidades>7</unidades>
+          </almacen>
+        </stock>
+        <shipping>
+          <pesoKg>0.40</pesoKg>
+          <fragil>true</fragil>
+        </shipping>
+
+        <variantes>
+          <variante id="v1">
+            <atributos>
+              <almacenamiento>128GB</almacenamiento>
+              <color>negro</color>
+            </atributos>
+            <stock>
+              <unidades>3</unidades>
+            </stock>
+          </variante>
+
+          <variante id="v2">
+            <atributos>
+              <almacenamiento>256GB</almacenamiento>
+              <color>azul</color>
+            </atributos>
+            <stock>
+              <unidades>0</unidades>
+            </stock>
+          </variante>
+        </variantes>
+
+        <tags>
+          <tag>movil</tag>
+          <tag>5g</tag>
+        </tags>
+      </producto>
+
+    </productos>
+
+  </catalogo>
+
+  <usuarios>
+
+    <usuario id="U-001" premium="true">
+      <nombre>Aina Soler</nombre>
+      <email>aina@demo.com</email>
+    </usuario>
+
+    <usuario id="U-002" premium="false">
+      <nombre>David Ruiz</nombre>
+      <email>david@demo.com</email>
+    </usuario>
+
+  </usuarios>
+
+  <pedidos>
+
+    <pedido id="O-001" usuarioRef="U-001" fecha="2026-01-07" estado="pagado">
+      <lineas>
+        <linea productoRef="P1">
+          <cantidad>1</cantidad>
+          <precioUnitario>79.99</precioUnitario>
+        </linea>
+        <linea productoRef="P2">
+          <cantidad>2</cantidad>
+          <precioUnitario>399.00</precioUnitario>
+        </linea>
+      </lineas>
+      <totales>
+        <subtotal />
+        <iva />
+        <total />
+      </totales>
+    </pedido>
+
+    <pedido id="O-002" usuarioRef="U-002" fecha="2026-01-12" estado="pendiente">
+      <lineas>
+        <linea productoRef="P1">
+          <cantidad>1</cantidad>
+          <precioUnitario>79.99</precioUnitario>
+        </linea>
+        <linea productoRef="P1">
+          <cantidad>1</cantidad>
+          <precioUnitario>79.99</precioUnitario>
+        </linea>
+      </lineas>
+      <totales>
+        <subtotal />
+        <iva />
+        <total />
+      </totales>
+    </pedido>
+    
+  </pedidos>
+
+</ecommerce>

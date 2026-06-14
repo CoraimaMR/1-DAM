@@ -1,0 +1,381 @@
+===============================
+APUNTES CISCO PACKET TRACER
+COMANDOS IMPORTANTES
+===============================
+
+================================
+1. MODOS DEL DISPOSITIVO
+================================
+
+Modo EXEC Usuario:
+>
+
+Modo EXEC Privilegiado:
+#
+
+enable
+exit
+end
+?
+
+Abreviaturas:
+conf t = configure terminal
+int = interface
+sw acc vlan = switchport access vlan
+
+================================
+2. COMANDOS BÁSICOS
+================================
+
+enable
+exit
+end
+?
+configure terminal
+
+================================
+3. COMANDOS DE CONSULTA
+================================
+
+show running-config
+show startup-config
+show vlan
+show vlan brief
+show ip route
+show interfaces
+show ip interface brief
+show access-lists
+show ip protocols
+show ip ospf neighbor
+show clock
+
+================================
+4. CONFIGURACIÓN BÁSICA
+================================
+
+configure terminal
+hostname [nombre]
+
+Ejemplo:
+hostname Router1
+
+================================
+5. CONFIGURAR IP
+================================
+
+configure terminal
+interface [interfaz]
+ip address [IP] [máscara]
+no shutdown
+
+Ejemplo:
+interface g0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+
+================================
+6. VLAN
+================================
+
+CREAR VLAN
+
+configure terminal
+vlan [numero]
+name [nombre]
+
+Ejemplo:
+vlan 10
+name ADMIN
+
+----------------------------
+
+ASIGNAR PUERTO A VLAN
+
+configure terminal
+interface [puerto]
+switchport mode access
+switchport access vlan [numero]
+
+Ejemplo:
+interface fa0/1
+switchport mode access
+switchport access vlan 10
+
+----------------------------
+
+TRUNK
+
+interface [puerto]
+switchport mode trunk
+
+Ejemplo:
+interface g0/1
+switchport mode trunk
+
+================================
+7. VTP
+================================
+
+MODO SERVER
+
+vtp domain [nombre]
+vtp password [contraseña]
+vtp mode server
+
+----------------------------
+
+MODO TRANSPARENT
+
+vtp domain [nombre]
+vtp password [contraseña]
+vtp mode transparent
+
+----------------------------
+
+MODO CLIENT
+
+vtp domain [nombre]
+vtp password [contraseña]
+vtp mode client
+
+================================
+8. ENRUTAMIENTO ESTÁTICO
+================================
+
+ip route [red_destino] [máscara] [salto]
+
+Ejemplo:
+ip route 192.168.2.0 255.255.255.0 10.0.0.2
+
+================================
+9. RIP v1 y RIP v2
+================================
+
+RIPv1
+
+router rip
+network [direccion_red]
+
+Ejemplo:
+router rip
+network 192.168.1.0
+network 10.0.0.0
+
+----------------------------
+
+RIPv2
+
+router rip
+version 2
+no auto-summary
+network [direccion_red]
+
+Ejemplo:
+router rip
+version 2
+no auto-summary
+network 192.168.1.0
+network 10.0.0.0
+
+================================
+10. OSPF
+================================
+
+router ospf [id_proceso]
+network [direccion_red] [wildcard] area [id_area]
+
+Ejemplo:
+router ospf 1
+network 192.168.1.0 0.0.0.255 area 0
+ 
+================================
+11. SERVIDORES
+================================
+
+NTP
+
+ntp server [ip servidor]
+exit
+show clock
+
+Ejemplo:
+ntp server 192.168.1.10
+
+----------------------------
+
+SYSLOG
+
+logging on
+logging host [ip servidor]
+logging userinfo
+service timestamps log datetime msec
+exit
+
+Ejemplo:
+logging host 192.168.1.20
+
+================================
+12. ACL
+================================
+
+ACL STANDARD
+
+access-list [numero 1 - 99] permit|deny [IP]
+
+Ejemplo:
+access-list 1 deny 192.168.1.0 0.0.0.255
+access-list 1 permit any
+
+----------------------------
+
+ACL EXTENDIDA
+
+access-list [numero 100 - 199] permit|deny [protocolo] [IP origen] [IP destino] eq [puerto]
+
+Ejemplo:
+access-list 100 deny tcp any any eq 80
+access-list 100 permit ip any any   -> para permitir el resto del tráfico.
+
+----------------------------
+
+DIRRECION RED
+
+[direccion_red] [wildcard]
+Ejemplo:
+192.168.1.0 0.0.0.255
+
+----------------------------
+
+HOST ÚNICO
+
+host [IP]
+
+Ejemplo:
+host 192.168.1.5
+
+----------------------------
+
+CUALQUIER EQUIPO
+
+any
+
+----------------------------
+
+ASIGNAR ACL A INTERFAZ
+
+interface [interfaz]
+ip access-group [numero ACL] in|out
+
+Ejemplo:
+interface g0/0
+ip access-group 1 in
+
+----------------------------
+
+IN = tráfico que entra
+OUT = tráfico que sale
+
+================================
+13. PUERTOS IMPORTANTES
+================================
+
+IP -> TODOO
+
+PING -> ICMP -> echo
+
+HTTP  -> TCP -> 80
+→ Navegación web
+
+HTTPS -> TCP -> 443
+→ Navegación web segura
+
+FTP   -> TCP -> 21
+→ Transferencia de archivos
+
+SMTP  -> TCP -> 25
+→ Envío de correos
+
+DNS   -> UDP -> 53
+→ Traducción de nombres a IP
+
+================================
+14. WILDCARD MASK
+================================
+
+255.255.255.0   -> 0.0.0.255
+255.255.255.128 -> 0.0.0.127
+255.255.255.192 -> 0.0.0.63
+255.255.255.224 -> 0.0.0.31
+255.255.255.240 -> 0.0.0.15
+
+================================
+15. VLSM
+================================
+
+Formula hosts:
+
+2^n - 2
+
+/24 = 254 hosts
+/25 = 126 hosts
+/26 = 62 hosts
+/27 = 30 hosts
+/28 = 14 hosts
+
+================================
+16. COMANDOS DE DIAGNÓSTICO
+================================
+
+ping [IP]
+tracert [IP]
+
+show running-config
+show ip route
+show interfaces
+show ip interface brief
+
+================================
+17. EXTRA IMPORTANTE
+================================
+
+Si escribes mal un comando puede quedarse bloqueado
+intentando resolver DNS.
+
+Cancelar:
+Ctrl + Shift + 6
+
+Desactivar búsqueda DNS:
+
+configure terminal
+no ip domain-lookup
+
+================================
+18. GUARDAR CONFIGURACIÓN
+================================
+
+copy running-config startup-config
+
+o
+
+write
+
+================================
+19. BORRAR CONFIGURACIÓN
+================================
+
+erase startup-config
+reload
+
+================================
+20. ACTIVAR INTERFACES
+================================
+
+interface [interfaz]
+no shutdown
+
+================================
+21. DESACTIVAR INTERFACES
+================================
+
+interface [interfaz]
+shutdown

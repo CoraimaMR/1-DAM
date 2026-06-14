@@ -1,0 +1,111 @@
+REGLAS
+
+1. Debe existir UN ÚNICO ELEMENTO RAÍZ (ROOT)
+Todo el contenido del documento tiene que estar dentro de una sola etiqueta principal.
+
+Bien:
+<alumnos>
+<alumno>María</alumno>
+<alumno>Diego</alumno>
+</alumnos>
+
+Mal (dos raíces):
+<alumno>María</alumno>
+<alumno>Diego</alumno>
+
+ 
+
+2. Todas las etiquetas deben estar CERRADAS
+En XML no existen etiquetas “abiertas” como en HTML. O se cierran con su etiqueta de cierre, o son vacías (/>).
+
+Bien:
+<nombre>María</nombre>
+
+Bien (etiqueta vacía):
+<foto />
+
+Mal:
+<nombre>María
+
+ 
+
+3. Las etiquetas deben estar BIEN ANIDADAS (SIN CRUCES)
+Si abres una etiqueta dentro de otra, debes cerrarla antes de cerrar la exterior. No se pueden “cruzar”.
+
+Bien:
+<persona>
+<nombre>María</nombre>
+<edad>20</edad>
+</persona>
+
+Mal (anidación cruzada):
+<persona>
+<nombre>María</persona>
+</nombre>
+
+ 
+
+4. Los nombres de etiquetas y atributos son CASE-SENSITIVE
+En XML, mayúsculas y minúsculas importan: <Alumno> y <alumno> son cosas distintas.
+
+Bien:
+<alumno>
+<nombre>María</nombre>
+</alumno>
+
+Mal:
+<alumno>
+<Nombre>María</nombre>
+</alumno>
+
+ 
+
+5. Los valores de los atributos deben ir ENTRE COMILLAS
+Siempre comillas dobles o simples. Sin comillas → no es XML bien formado.
+
+Bien:
+<alumno id="A12" grupo='1DAM' />
+
+Mal:
+<alumno id=A12 grupo=1DAM />
+
+ 
+
+5.1 Posible criterio para diferenciar entre atributos y elementos
+
+Elige un criterio y aplícalo siempre. Sé coherente y consistente con su aplicación. Por ejemplo:
+
+Atributos para:
+
+identificadores (id)
+referencias (usuarioRef, productoRef, categoriaRef)
+flags/estado (activo, premium, estado)
+metadatos cortos de “cabecera” (fecha, moneda)
+Elementos para:
+
+valores “de negocio” que pueden crecer o cambiar de estructura
+importes, cantidades, pesos, etc. (precio, unidades, pesoKg)
+estructuras repetibles o con subcampos (direccion, lineas, shipping)
+ 
+
+ 
+
+6. Los atributos NO SE REPITEN en la misma etiqueta
+Un mismo atributo no puede aparecer dos veces en el mismo elemento.
+
+Bien:
+<alumno id="A12" grupo="1DAM" />
+
+Mal:
+<alumno id="A12" id="A13" />
+
+7. Los caracteres especiales deben escribirse con ENTIDADES
+Hay símbolos que no se pueden poner “tal cual” en texto o atributos porque tienen significado en XML (o porque romperían el documento).
+
+Los más típicos:
+
+<  à  &lt; (siempre que quieras escribir el símbolo “menor que”)
+&  à  &amp; (siempre que quieras escribir un “&” literal)
+>  à  &gt; (normalmente se puede escribir, pero se recomienda escaparlo en expresiones tipo ]]> o por claridad)
+"  à  &quot; (si estás dentro de un atributo entre comillas dobles)
+'  à  &apos; (si estás dentro de un atributo entre comillas simples)

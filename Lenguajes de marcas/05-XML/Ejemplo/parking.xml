@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE parking SYSTEM "parking.dtd">
+
+<parking id="PK-001" nombre="Parking Centro" ciudad="Sevilla">
+
+  <plazas>
+
+    <plaza id="P-001" tipo="coche" estado="libre" />
+
+    <plaza id="P-002" tipo="coche" estado="ocupada" />
+
+    <plaza id="P-003" tipo="moto" estado="libre" />
+
+  </plazas>
+
+ 
+
+  <vehiculos>
+
+    <vehiculo id="V-1234ABC" matricula="1234ABC" tipo="coche" />
+
+    <vehiculo id="V-5678DEF" matricula="5678DEF" tipo="coche" />
+
+    <vehiculo id="V-1111GHI" matricula="1111GHI" tipo="moto" />
+
+  </vehiculos>
+
+ 
+
+  <estancias>
+
+    <estancia id="E-001" plazaRef="P-002" vehiculoRef="V-5678DEF"
+
+      entrada="2026-01-20T09:10:00" salida="" />
+
+  </estancias>
+
+</parking>

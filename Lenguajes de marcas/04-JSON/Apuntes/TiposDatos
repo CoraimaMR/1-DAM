@@ -1,0 +1,144 @@
+# 2.1 Json
+
+Requisitos de finalización
+Chuleta: tipos de datos (JSON)
+
+1. String (texto)
+   Va entre comillas: "hola", "TechNova", "2026-01-07T13:15"
+   Ojo: "true" y "49.99" son texto, no boolean o número.
+
+2. Number (número)
+   Va sin comillas: 21, -3, 49.99, 1e3
+   Sirve para cantidades, precios, ids numéricos, etc.
+
+3. Boolean (verdadero/falso)
+   Solo: true o false (sin comillas)
+   Para flags à abierta: true, en_stock: false.
+
+4. Null (sin valor / desconocido)
+   Solo: null (sin comillas)
+   Cuando el dato no está disponible: telefono_soporte: null.
+
+5. Array (lista/colección ordenada)
+   Entre corchetes []: ["a", "b"], [1, 2, 3]
+   Acceso por índice: el 1º es [0], el 2º [1], etc.
+
+6. Object (objeto / diccionario clave→valor)
+   Un objeto es una forma de agrupar datos relacionados bajo un mismo “nombre”, en formato clave → valor. Piensa en él como una ficha o registro (por ejemplo, “un usuario”) que tiene propiedades (“nombre”, “edad”, “email”, etc.).
+   Se delimita entre llaves {}:
+   "tienda": { "nombre": "TechNova", "pais": "ES" }
+
+Resumen:
+Comillas = string.
+true/false/null y números van sin comillas.
+
+# Herramientas que vamos a usar
+
+VS Code
+JSONLint → para validar y formatear JSON (detecta errores al instante).
+Uso típico: pegar JSON → “Validate/Beautify”.
+https://jsonlint.com/
+
+Hoppscotch → para hacer una llamada HTTP y ver JSON como si fueras Postman.
+Uso típico: GET a una API → ver respuesta → copiar parte.
+https://hoppscotch.io/
+
+# JSON: Ejemplo mini e-commerce
+
+Objetivos:
+
+Crear un documento JSON válido y bien estructurado.
+Entender y usar tipos (número vs texto, boolean).
+Representar datos reales de un e-commerce: productos, usuarios y pedidos.
+Conectar datos entre sí usando IDs (sin duplicar información).
+Consumir JSON real desde una “API de prueba” y reutilizarlo en tu proyecto.
+Producto final: un archivo tienda.json (bien formateado y sin errores) que podría usar una aplicación real.
+
+Ejercicio: Crea el catálogo de productos de una tienda
+
+Contexto (por qué esto sirve)
+
+Casi todas las apps (móvil/web) guardan y mueven información en JSON: productos, usuarios, pedidos, configuraciones…
+
+Hoy vas a crear un catálogo de productos como si fueras el equipo de datos de una tienda online.
+
+Crear carpeta à Lenguajes/1-json-1-tienda.json
+
+Dentro:
+
+1. crea la estructura base
+
+Corrige el siguiente código Json à
+
+"tienda": {
+
+    "nombre": "TechNova",
+
+    "moneda": "EUR",
+
+    "pais": "ES",
+
+    "abierta": “true”,
+
+    "iva": “21”,
+
+    "envio_gratis_desde": 49.99,
+
+    "telefono_soporte": “null”,
+
+     "direccion": {
+
+      "ciudad": "Rota",
+
+      "codigo_postal": "11520",
+
+    },
+
+    "ultima_actualizacion": "2026-01-07T13:15:00+01:00"
+
+},
+
+"catalogo": {
+
+    "categorias": ["movil", "audio", "gaming"],
+
+    "productos": []
+
+}
+
+CORREGIDO en practica01.json
+
+# Formateo y validación
+
+Alternativa a VSCode:
+
+Abre JSONLint (https://jsonlint.com/).
+Copia y pega el código JSON base.
+Dale a “Validate” / “Beautify” para que quede formateado.
+
+¿Qué estás viendo aquí?
+
+{} es un objeto (un “registro” “desordenado” con campos).
+[] es una lista/array (una colección ordenada de cosas).
+
+# 2. Práctica guiada: añade productos como en una tienda real
+
+Vamos a crear 3 productos. Cada producto debe seguir esta plantilla (mismo nombre de campos): id, nombre, marca, categoríaId, precio (base, ivaPct), stock (en varios almacenes (almacen, unidades), activo (si existe o está descatalogado), tags (etiquetas).
+
+2.A) Plantilla de producto: ...
+
+2.B) Modificaciones 1 (invéntate los valores):
+
+-          Cambia las categías à cada una tiene un id y un nombre.
+
+-          Dentro de 2 productos, añade un objeto “shipping” con “peso” y “frágil”
+
+-          En un producto, crea una lista de “variantes” con: id, atributos (característica1, característica2), stock.
+
+-          Dentro del JSON, al mismo nivel que catalogo, añade usuarios (id, nombre, email, premium):
+
+  2.C) Modificaciones 2
+
+Crea una plantilla de pedidos (pedidoId, usuarioId, fecha, estado, líneas (de compra -> productoId, cantidad, precioUnitario), subtotal: null, iva: null, total: null)
+
+TODO HECHO en practica01.json
